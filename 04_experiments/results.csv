@@ -1,0 +1,5 @@
+experiment_id,variant,n,citation_alignment,helpfulness,refusal_rate,latency_ms,notes
+exp_001_quoted_spans,baseline,20,0.61,0.72,0.08,820,"baseline from mixed EN/HI/UR/ES"
+exp_001_quoted_spans,quoted_spans,20,0.72,0.73,0.08,874,"alignment +11pp; latency +6.6%"
+exp_002_system_style,baseline,24,,0.73,0.07,780,"tone_drift_rate: 0.22"
+exp_002_system_style,system_style,24,,0.73,0.07,792,"tone_drift_rate: 0.15 (−32%); Δlatency +1.5%"

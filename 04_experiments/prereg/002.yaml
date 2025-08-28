@@ -1,0 +1,53 @@
+id: exp_002_system_style
+title: "System style guide reduces tone drift with neutral cost"
+owner: "Afridi"
+prereg_date_ist: "2025-08-24 20:00 IST"
+timeframe_ist: "start: 2025-08-25 10:00 IST, end: 2025-08-26 18:00 IST"
+hypothesis: "A concise system style guide will reduce tone_drift_rate by ≥30% with Δhelpfulness ≥ −1pp and Δlatency ≤ +2%."
+background: |
+  Taste should be explicit: undocumented norms cause inconsistent voice and user confusion.
+  A compact, enforceable style guide can reduce tone drift without harming helpfulness.
+  Risks include over-politeness or stiffness, especially across languages; we tune cadence per locale.
+  We expect neutral latency impact given minimal prompt overhead.
+variants: [baseline, system_style]
+sample_size_per_variant: 24
+metrics:
+  tone_drift_rate: "Share of responses violating five style rules (lower is better)."
+  helpfulness: "0..1; rubric on clarity, actionability, and correctness."
+  latency_ms: "End-to-end response time in milliseconds."
+  refusal_rate: "0..1; proportion of prompts that result in refusals."
+data_sources: ["02_golden_transcripts.md", "data/helmsman.jsonl"]
+population: "Mixed tasks: confirmations, ambiguity nudges, refusals, low-bandwidth; EN/HI/UR/ES evenly represented."
+randomization: "Latin-square across tasks × language; seed 17."
+procedure: |
+  1) Apply a ~120-word system style guide (house voice, refusals, citations, cadence).
+  2) Run 48 prompts (24/variant) balanced across tasks and languages.
+  3) Auto-lint five rules; log violations with tags and language.
+  4) Compute tone_drift_rate, helpfulness, latency_ms, refusal_rate per variant.
+  5) Write a row to 04_experiments/results.csv and update ablations.md and decision_log.md.
+stop_rule: "Stop at n=24/variant; abort if refusal_rate worsens by >2pp."
+accept_thresholds:
+  tone_drift_rate_relative_drop_pct: 30
+  helpfulness_delta_pp_min: -1
+  latency_delta_pct_max: 2
+  refusal_delta_pp_max: 1
+analysis_plan: |
+  Compare tone_drift_rate via two-proportion z-test; report relative change with 95% CI.
+  Slice by language to detect bias; Holm-correct follow-ups.
+  Summarize helpfulness and latency deltas; flag regressions exceeding thresholds.
+  Persist a single summary row to results.csv and notes to decision_log.md.
+risks:
+  - "Stilted tone — keep guide concise; include examples; audit weekly."
+  - "False positives in lint — review sample of flags; tune rules."
+  - "Language bias — per-language slices; adjust phrasing for HI/UR/ES."
+ethics_policy: |
+  No deceptive claims; clear refusals with adjacent help.
+  Respectful multilingual phrasing; avoid stereotypes or insensitive wording.
+  Minimize citations to key spans; avoid link dumping.
+outputs:
+  - "04_experiments/results.csv (append summary row)"
+  - "07_data_behavior/ablations.md (entry stub)"
+  - "08_ops/decision_log.md (note with outcome)"
+notes: |
+  Assumed baselines: tone_drift_rate=0.22, helpfulness=0.73, latency_ms=780, refusal_rate=0.07.
+  Expected outcome: drift ≈0.15 (−32%), helpfulness within −1pp, latency within +2%.

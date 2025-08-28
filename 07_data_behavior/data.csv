@@ -1,0 +1,3 @@
+variant,alignment,latency_ms
+baseline,0.61,820
+quoted_spans,0.72,874

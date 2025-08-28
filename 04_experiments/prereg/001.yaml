@@ -1,0 +1,53 @@
+id: exp_001_quoted_spans
+title: "Quoted spans reduce citation drift with minimal latency cost"
+owner: "Afridi"
+prereg_date_ist: "2025-08-24 20:00 IST"
+timeframe_ist: "start: 2025-08-25 10:00 IST, end: 2025-08-26 18:00 IST"
+hypothesis: "Quoted spans will increase citation_alignment by ≥8pp with ≤10% latency increase; refusal_rate stable (≤+1pp)."
+background: |
+  Citation drift occurs when answers loosely paraphrase sources, causing mismatches.
+  Binding sensitive facts to short quoted spans narrows interpretation and improves alignment.
+  We expect minimal latency impact from formatting. Mix includes EN/HI/UR/ES to catch translation drift.
+  Retriever and prompts remain identical; only span quoting changes.
+variants: [baseline, quoted_spans]
+sample_size_per_variant: 20
+metrics:
+  citation_alignment: "0..1; fraction of cited statements exactly supported by source text."
+  latency_ms: "End-to-end response time in milliseconds."
+  helpfulness: "0..1; quick rubric: directly answers, useful next step, clear tone."
+  refusal_rate: "0..1; share of prompts that result in refusals."
+data_sources: ["data/argos.jsonl"]
+population: "General knowledge + how-to; EN/HI/UR/ES evenly distributed (5 each per variant)."
+randomization: "Uniform shuffle; deterministic seed 42; alternate language order to avoid clustering."
+procedure: |
+  1) Run both variants over the same 40 prompts (20/variant).
+  2) Capture outputs, quoted spans, timings, and refusal flags.
+  3) Compute citation_alignment per claim via human check; log span length.
+  4) Bootstrap 5k resamples to estimate Δalignment; compute latency_ms distributions.
+  5) Append one row to 04_experiments/results.csv and update 07_data_behavior/data.csv.
+  6) Tag commit with exp_001_quoted_spans and push artifacts.
+stop_rule: "Stop at n=20/variant or once Δalignment ≥ +8pp with 95% CI excluding 0."
+accept_thresholds:
+  alignment_delta_pp: 8
+  latency_delta_pct_max: 10
+  refusal_delta_pp_max: 1
+analysis_plan: |
+  Use bootstrap (5,000 resamples) for alignment delta with 95% CI.
+  Perform language-stratified sanity checks (EN/HI/UR/ES) for consistency.
+  Compare latency via Mann–Whitney U; report median and IQR.
+  Persist metrics to 04_experiments/results.csv and 07_data_behavior/data.csv for dashboards.
+risks:
+  - "Prompt overfit — hold out topics; use blind reviewers."
+  - "Domain skew — stratify by domain; cap per-domain weight."
+  - "Language imbalance — enforce 5 per language per variant; audit per-language deltas."
+ethics_policy: |
+  Safety first: no disallowed content; preserve adjacent-help in refusals.
+  Quote only necessary spans; respect fair use and attribution norms.
+  Use culturally respectful phrasing across EN/HI/UR/ES; avoid sensationalism.
+outputs:
+  - "04_experiments/results.csv (append one row)"
+  - "07_data_behavior/data.csv (append run metrics)"
+  - "07_data_behavior/dashboard.png (to be generated from data)"
+notes: |
+  Assumed baselines: alignment=0.61, latency_ms=820, helpfulness=0.72, refusal_rate=0.08.
+  Expected effect: ~+10pp alignment with ~+7% latency increase and ≤+1pp refusal.

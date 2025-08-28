@@ -1,0 +1,98 @@
+[
+  {
+    "id": "p1",
+    "name": "Alex",
+    "langs": ["en"],
+    "reading_level": "B1",
+    "device": "low-end Android",
+    "bandwidth": "low",
+    "sensitivities": ["time", "cost", "privacy"],
+    "delighters": ["TL;DR first", "checklist", "clear next step"],
+    "fails": ["slow loads", "vague steps", "jargon"],
+    "accessibility_needs": ["screen reader", "high contrast"],
+    "examples": {
+      "good": "Low-bandwidth summary: three steps, 15 minutes, no images. Shall I start?",
+      "bad": "I humbly apologize for any inconvenience; kindly peruse this comprehensive document henceforth."
+    }
+  },
+  {
+    "id": "p2",
+    "name": "Maya",
+    "langs": ["hi", "en"],
+    "reading_level": "B1",
+    "device": "mid-range phone",
+    "bandwidth": "medium",
+    "sensitivities": ["politeness", "time", "clarity"],
+    "delighters": ["gentle tone", "two-step plan", "examples"],
+    "fails": ["over-apology", "long paragraphs", "citation dumps"],
+    "accessibility_needs": [],
+    "examples": {
+      "good": "पहले सार, फिर कदम—5 मिनट में रूपरेखा; विस्तार चाहिए तो बताइए।",
+      "bad": "कृपया कृपया, अत्यंत कष्ट के लिए क्षमाप्रार्थी हूँ, विस्तृत विवरण प्रस्तुत करूँगा।"
+    }
+  },
+  {
+    "id": "p3",
+    "name": "Zara",
+    "langs": ["ur", "en"],
+    "reading_level": "A2",
+    "device": "shared PC",
+    "bandwidth": "medium",
+    "sensitivities": ["cost", "privacy", "politeness"],
+    "delighters": ["simple words", "checklist", "adjacent help"],
+    "fails": ["technical slang", "unclear consent", "walls of text"],
+    "accessibility_needs": ["keyboard only"],
+    "examples": {
+      "good": "مختصر خلاصہ، پھر दो قدم؛ کیا میں آپ کے اوقات دیکھ سکتا ہوں؟",
+      "bad": "براہِ کرم یہاں متعدد ہائپر لنکس پر کلک فرما کر تفصیلی وضاحت ملاحظہ فرمائیں۔"
+    }
+  },
+  {
+    "id": "p4",
+    "name": "Diego",
+    "langs": ["es", "en"],
+    "reading_level": "B2",
+    "device": "desktop",
+    "bandwidth": "high",
+    "sensitivities": ["citations", "precision", "time"],
+    "delighters": ["quoted spans", "inline sources", "clear definitions"],
+    "fails": ["hand-waving", "imprecise numbers", "overly casual tone"],
+    "accessibility_needs": ["color vision deficiency"],
+    "examples": {
+      "good": "Resumen en 5 puntos con cifra exacta y cita breve entre comillas.",
+      "bad": "Creo que aproximadamente funciona; quizás luego vemos más detalles si eso."
+    }
+  },
+  {
+    "id": "p5",
+    "name": "Nikhil",
+    "langs": ["en"],
+    "reading_level": "B2",
+    "device": "desktop",
+    "bandwidth": "high",
+    "sensitivities": ["owner", "deadline", "traceability"],
+    "delighters": ["A/B clarifier", "timestamps", "decision gate"],
+    "fails": ["unclear ownership", "moving scope", "missing metrics"],
+    "accessibility_needs": ["high contrast"],
+    "examples": {
+      "good": "A/B: one-pager or table? Default one-pager in 30 minutes; I own it.",
+      "bad": "I’ll get something out soon; we can circle back if required."
+    }
+  },
+  {
+    "id": "p6",
+    "name": "Sam",
+    "langs": ["en", "hi"],
+    "reading_level": "A2",
+    "device": "mid-range phone",
+    "bandwidth": "medium",
+    "sensitivities": ["time", "clarity", "cost"],
+    "delighters": ["low-bandwidth mode", "step order", "affirmation without fluff"],
+    "fails": ["links first", "images heavy", "ambiguous units"],
+    "accessibility_needs": ["dyslexia-friendly"],
+    "examples": {
+      "good": "Summary first: 10 minutes, 3 steps; then optional detail on request.",
+      "bad": "Click here for a full walkthrough with many screenshots and references."
+    }
+  }
+]
