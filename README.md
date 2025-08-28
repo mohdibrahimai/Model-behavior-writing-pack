@@ -9,8 +9,15 @@
 4) `07_data_behavior/dashboard.png`  
 5) `04_experiments/prereg/` → `04_experiments/killed_ideas.md` → `03_ambiguity/log.md`
 
-## What this repo proves
-Taste you can read; behavior you can measure. Two-turn fog-cutting converts vague asks into plans. Experiments move **prereg → brief → results → graveyard**. Multilingual cadence (EN/HI/UR/ES) is intentional. Philosophy maps to policy, copy, and evals. Small, auditable changes shift behavior with receipts — the “model as product” mindset.
+**What this proves (2–5 min skim):**
+• Taste & voice, safe refusals with adjacent help, ambiguity→clarifier control
+• Multilingual cadence (EN/HI/UR/ES)
+• Headline deltas: citation-alignment +11pp; latency +6–7%; refusal stable; tone drift ~−32%; n=40
+**Skim path:** 90-sec tour → Golden Transcripts → Prereg → Results.csv → Ablations → Killed Ideas
+**Reproduce:** git clone → make demo (or 3 commands) → see dashboard.png
+**Links:** PDF (proof-pack), /02_golden_transcripts.md, /04_experiments/results.csv, /07_data_behavior/ablations.md
+**Contact:** mohdibrahimafridi.ai@gmail.com • github.com/mohdibrahimai
+
 
 ## Live snapshot (assumed for scaffolding)
 - **citation_alignment:** `0.72` (baseline `0.61`, **+11pp**)  
