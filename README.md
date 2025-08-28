@@ -1,59 +1,75 @@
 # Proof Pack — skimmable receipts for model design
 
+**Printable overview (PDF):** [Model Behavior Writing Pack — Final (1).pdf](./Model%20Behavior%20Writing%20Pack%20%E2%80%94%20Final%20(1).pdf)
+
 ## 90-second tour (start here)
-1) 01_taste/voice_and_taste.md  
-2) 01_taste/before_after.md  
-3) 02_golden_transcripts.md  
-4) 07_data_behavior/dashboard.png  
-5) 04_experiments/prereg/ → 04_experiments/killed_ideas.md → 03_ambiguity/log.md
+1) `01_taste/voice_and_taste.md`  
+2) `01_taste/before_after.md`  
+3) `02_golden_transcripts.md`  
+4) `07_data_behavior/dashboard.png`  
+5) `04_experiments/prereg/` → `04_experiments/killed_ideas.md` → `03_ambiguity/log.md`
 
 ## What this repo proves
-Taste shows up in consistent voice, tight rewrites, and clear refusals. Two-turn fog cutting turns ambiguity into plans. Honest experiments move from prereg → results → graveyard. Empathy and multilingual cadence are deliberate. Philosophy maps to policy and copy. Data changes shift behavior. Ops cadence keeps receipts weekly.
+Taste you can read; behavior you can measure. Two-turn fog-cutting converts vague asks into plans. Experiments move **prereg → brief → results → graveyard**. Multilingual cadence (EN/HI/UR/ES) is intentional. Philosophy maps to policy, copy, and evals. Small, auditable changes shift behavior with receipts — the “model as product” mindset.
 
 ## Live snapshot (assumed for scaffolding)
-- **citation_alignment:** 0.72 (baseline 0.61, **+11pp**)  
-- **helpfulness:** 0.73 (steady)  
-- **refusal_rate:** 0.08 (steady)  
-- **latency_ms:** 874 (**+6.6%** vs baseline)  
+- **citation_alignment:** `0.72` (baseline `0.61`, **+11pp**)  
+- **helpfulness:** `0.73` (steady)  
+- **refusal_rate:** `0.08` (steady)  
+- **latency_ms:** `874` (**+6.6%** vs baseline)  
 Tone drift down ~32% with system style; bytes_out −62% in low-bandwidth pilot.
 
 ## Repo map (open these first)
-- 01_taste/* — style rules; before→after pairs.  
-- 02_golden_transcripts.md — 20 micro-dialogs (EN/HI/UR/ES).  
-- 03_ambiguity/* — two-turn log + 48h briefs.  
-- 04_experiments/prereg/* and .../briefs/* — preregs + one-pagers.  
-- 04_experiments/results.csv and .../killed_ideas.md — numbers + honest burials.  
-- 05_empathy/* — personas, multilingual variants, accessibility.  
-- 06_philosophy/playbook.md — principles, refusal rubric, uncertainty language.  
-- 07_data_behavior/* — ablations, data.csv, dashboard.png.  
-- 08_ops/* and 09_churn_review/* — cadence, decisions, weekly dashboard.  
-- data/*.jsonl — raw events (HELMSMAN/ARGOS/UIRE).
+- `01_taste/*` — style rules; before→after pairs.  
+- `02_golden_transcripts.md` — 20 micro-dialogs (EN/HI/UR/ES).  
+- `03_ambiguity/*` — two-turn log + 48h briefs.  
+- `04_experiments/prereg/*` and `.../briefs/*` — preregs + one-pagers.  
+- `04_experiments/results.csv` and `.../killed_ideas.md` — numbers + honest burials.  
+- `05_empathy/*` — personas, multilingual variants, accessibility.  
+- `06_philosophy/playbook.md` — principles, refusal rubric, uncertainty language.  
+- `07_data_behavior/*` — ablations, `data.csv`, `dashboard.png`, chart script.  
+- `08_ops/*` and `09_churn_review/*` — cadence, decisions, weekly dashboard.  
+- `data/*.jsonl` — seed events (HELMSMAN/ARGOS/UIRE).  
+- `Model Behavior Writing Pack — Final (1).pdf` — printable overview.
+
+## What’s unique here (for Model Designer reviewers)
+- **Spec → copy → behavior:** refusal rubric, uncertainty phrases, A/B clarifier, quoted spans.  
+- **Receipts, not vibes:** prereg gates, short runs, CSV deltas, dashboard.  
+- **Ego-light:** five “killed ideas” with numbers and one-line lessons.  
+- **Multilingual rhythm:** EN/HI/UR/ES parity in transcripts and tests.  
+- **Ops cadence:** decision log, weekly churn ritual, fast iteration.
 
 ## Experiments at a glance
-| id | variant | n | citation_alignment | helpfulness | refusal_rate | latency_ms | note |
-|---|---|---|---|---|---|---|---|
-| exp_001_quoted_spans | baseline/quoted_spans | 20/20 | 0.61 → 0.72 | 0.72 → 0.73 | 0.08 → 0.08 | 820 → 874 | alignment +11pp; latency +6.6% |
-| exp_002_system_style | baseline/system_style | 24/24 | — | 0.73 → 0.73 | 0.07 → 0.07 | 780 → 792 | tone drift −32% (see ablations) |
+id | variant | n | citation_alignment | helpfulness | refusal_rate | latency_ms | note
+---|---|---:|---|---|---|---:|---
+exp_001_quoted_spans | baseline/quoted_spans | 20/20 | 0.61 → 0.72 | 0.72 → 0.73 | 0.08 → 0.08 | 820 → 874 | +11pp align; +6.6% lat
+exp_002_system_style | baseline/system_style | 24/24 | — | 0.73 → 0.73 | 0.07 → 0.07 | 780 → 792 | tone drift −32%
+
+## How to verify the receipts
+- Open `04_experiments/results.csv` and `07_data_behavior/data.csv`.  
+- View `07_data_behavior/dashboard.png` for the bar+line snapshot.  
+- Skim `04_experiments/killed_ideas.md` for failures and lessons.  
+- Read `08_ops/decision_log.md` and `09_churn_review/dashboard.md` for weekly movement.
 
 ## How to regenerate the chart
 1) Update `04_experiments/results.csv` and `07_data_behavior/data.csv`.  
-2) Run the chart script that writes `07_data_behavior/dashboard.png` (e.g., `python 07_data_behavior/make_dashboard.py`).  
-3) Commit with message `feat: refresh dashboard` and reference the changed files.  
-Note: If CSVs are empty, the fallback values (0.61→0.72; 820→874) are used.
+2) Run `python 07_data_behavior/make_dashboard.py` → writes `07_data_behavior/dashboard.png`.  
+3) Commit with `feat: refresh dashboard` and reference changed files.  
+*If CSVs are empty, fallback values are used (0.61→0.72; 820→874).*
 
 ## Interview tour script (90 seconds)
-- Style guide rule of five; sliders show defaults.  
+- Taste rules: five non-negotiables; sliders show default tone targets.  
 - Two before/after lines: plan, scope, time.  
-- A tiny transcript: delight + safe refusal.  
-- The chart: quoted spans improve alignment with modest latency.  
-- One prereg + one graveyard entry: data > ego.  
-- Ambiguity log: two turns → plan.
+- Micro-dialog: delight + safe refusal with adjacent help.  
+- Chart: quoted spans improve alignment with modest latency.  
+- One prereg + one graveyard: **data > ego**.  
+- Ambiguity log: two turns → 2-step plan.
 
 ## Metrics & definitions
-- `citation_alignment (0..1)` — share of answer tokens grounded in cited text.  
-- `helpfulness (0..1)` — simple rubric across clarity, correctness, actionability.  
-- `refusal_rate (0..1)` — proportion of turns that correctly refuse.  
-- `latency_ms` — end-to-end time to first complete answer.
+- `citation_alignment (0..1)` — tokens grounded in cited text.  
+- `helpfulness (0..1)` — clarity, correctness, actionability.  
+- `refusal_rate (0..1)` — correct safety refusals.  
+- `latency_ms` — time to first complete answer.
 
 ## Gates (keep / iterate / kill)
 - **Keep** if alignment **+≥8pp** and latency **≤ +10%**.  
@@ -61,7 +77,7 @@ Note: If CSVs are empty, the fallback values (0.61→0.72; 820→874) are used.
 - **Kill** if refusal worsens **>1pp** without offsetting gains.
 
 ## Contributing — how to add new receipts
-1) Capture ambiguity in `03_ambiguity/log.md` with A/B and a 2-step plan.  
+1) Log ambiguity in `03_ambiguity/log.md` with A/B and a 2-step plan.  
 2) Add a prereg in `04_experiments/prereg/*` and a matching brief.  
 3) Append results to `04_experiments/results.csv`; update `07_data_behavior/data.csv`.  
 4) If it failed, add to `04_experiments/killed_ideas.md` with a one-line lesson.
@@ -69,3 +85,4 @@ Note: If CSVs are empty, the fallback values (0.61→0.72; 820→874) are used.
 ## Changelog & dashboard
 - Weekly: update `09_churn_review/changelog.md` and `09_churn_review/dashboard.md` (Fridays 17:30–17:50 IST).  
 - Visual: `07_data_behavior/dashboard.png` reflects `data.csv` deltas.
+board.png` reflects `data.csv` deltas.
