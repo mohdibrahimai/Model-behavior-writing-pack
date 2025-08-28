@@ -11,8 +11,11 @@
 
 **What this proves (2–5 min skim):**
 • Taste & voice, safe refusals with adjacent help, ambiguity→clarifier control
+
 • Multilingual cadence (EN/HI/UR/ES)
+
 • Headline deltas: citation-alignment +11pp; latency +6–7%; refusal stable; tone drift ~−32%; n=40
+
 **Skim path:** 90-sec tour → Golden Transcripts → Prereg → Results.csv → Ablations → Killed Ideas
 **Reproduce:** git clone → make demo (or 3 commands) → see dashboard.png
 **Links:** PDF (proof-pack), /02_golden_transcripts.md, /04_experiments/results.csv, /07_data_behavior/ablations.md
