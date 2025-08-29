@@ -1,6 +1,9 @@
 ![Success](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fmohdibrahimai%2FModel-behavior-writing-pack%2Fmain%2Fpublic%2Fbadges%2Fsuccess.json)
 ![Sessions](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fmohdibrahimai%2FModel-behavior-writing-pack%2Fmain%2Fpublic%2Fbadges%2Fsessions.json)
 
+![Success](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fmohdibrahimai%2FModel-behavior-writing-pack%2Fmain%2Fpublic%2Fbadges%2Fsuccess.json)
+![Sessions](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fmohdibrahimai%2FModel-behavior-writing-pack%2Fmain%2Fpublic%2Fbadges%2Fsessions.json)
+
 ## External Proofs
 - **Upstream PR:** Added `citation_alignment_quoted_spans`; +9–12pp on n≈40–60; ≤+7% latency. [PR](https://github.com/explodinggradients/ragas/pull/2237)
 
