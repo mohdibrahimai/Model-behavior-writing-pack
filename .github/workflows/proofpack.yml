@@ -14,10 +14,10 @@ jobs:
       - run: python -m pip install -U pip
       - run: python 07_data_behavior/make_metrics.py
       - run: python 07_data_behavior/make_badges.py
-      - name: Commit metrics
+      - name: Commit metrics & badges
         run: |
           git config user.name "proofpack-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add public/metrics.json
+          git add public/metrics.json public/badges/*.json || true
           git commit -m "chore: refresh telemetry" || echo "no changes"
           git push
