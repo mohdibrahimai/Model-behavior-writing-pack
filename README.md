@@ -1,3 +1,6 @@
+## External Proofs
+- **Upstream PR:** Added `citation_alignment_quoted_spans`; +9–12pp on n≈40–60; ≤+7% latency. [PR](https://github.com/explodinggradients/ragas/pull/2237)
+
 # Proof Pack — skimmable receipts for model design
 
 **Printable overview (PDF):** [Model Behavior Writing Pack — Final (1).pdf](./Model%20Behavior%20Writing%20Pack%20%E2%80%94%20Final%20(1).pdf)
